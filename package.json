@@ -4,7 +4,7 @@
   "description": "smol frontend api deployed on Cloudflare Pages",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "wrangler pages dev static"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@cazoo/eslint-plugin-eslint": "^1.0.2",
     "@cloudflare/workers-types": "^3.3.1",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "wrangler": "^0.0.10"
   }
 }

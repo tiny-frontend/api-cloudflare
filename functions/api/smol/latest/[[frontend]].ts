@@ -1,8 +1,16 @@
 export const onRequest: PagesFunction = async (context) => {
   const { params, env } = context;
 
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": context.request.headers.get("Origin"),
+    "Access-Control-Allow-Methods": "GET",
+  };
+
   if (params.frontend.length !== 2) {
-    return new Response("Invalid path parameters", { status: 400 });
+    return new Response("Invalid path parameters", {
+      status: 400,
+      headers: corsHeaders,
+    });
   }
 
   const SmolFrontendKv = (env as unknown as Record<string, KVNamespace>)[
@@ -19,7 +27,7 @@ export const onRequest: PagesFunction = async (context) => {
   if (latestVersionSourceKey == null) {
     return new Response(
       `${name} with contract version ${contractVersion} not found`,
-      { status: 404 }
+      { status: 404, headers: corsHeaders }
     );
   }
 
@@ -31,6 +39,7 @@ export const onRequest: PagesFunction = async (context) => {
       headers: {
         "Content-Type": "application/json",
         "Cache-Control": "no-cache, max-age=0",
+        ...corsHeaders,
       },
     }
   );

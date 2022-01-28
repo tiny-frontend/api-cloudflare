@@ -3,26 +3,18 @@ interface SmolFrontendConfig {
   cssBundle?: string;
 }
 
-export const onRequest: PagesFunction = async (context) => {
-  const { params, env } = context;
-
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": context.request.headers.get("Origin"),
-    "Access-Control-Allow-Methods": "GET",
-  };
-
-  if (params.frontend.length !== 2) {
+export const latestRoute = async (
+  name: string,
+  contractVersion: string,
+  corsHeaders: Record<string, string>,
+  SmolFrontendKv: KVNamespace
+): Promise<Response> => {
+  if (!name || !contractVersion) {
     return new Response("Invalid path parameters", {
       status: 400,
-      headers: corsHeaders,
+      ...corsHeaders,
     });
   }
-
-  const SmolFrontendKv = (env as unknown as Record<string, KVNamespace>)[
-    "SmolFrontendKv"
-  ];
-
-  const [name, contractVersion] = params.frontend;
   const latestConfigKey = `${name}-${contractVersion}-latest`;
 
   const latestConfigString = await SmolFrontendKv.get(latestConfigKey);

@@ -4,7 +4,7 @@
   "description": "smol frontend api deployed on Cloudflare Pages",
   "main": "index.js",
   "scripts": {
-    "dev": "wrangler pages dev static -k SmolFrontendKv"
+    "dev": "wrangler dev src/index.ts"
   },
   "repository": {
     "type": "git",

@@ -1,24 +1,15 @@
 const ONE_WEEK_IN_SECONDS = 60 * 60 * 24 * 7;
 
-export const onRequest: PagesFunction = async (context) => {
-  const { params, env } = context;
-
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": context.request.headers.get("Origin"),
-    "Access-Control-Allow-Methods": "GET",
-  };
-
-  const bundleName = params.bundleName as string | null;
+export const bundleRoute = async (
+  bundleName: string,
+  corsHeaders: Record<string, string>
+): Promise<Response> => {
   if (!bundleName) {
     return new Response("Invalid path parameters", {
       status: 400,
       ...corsHeaders,
     });
   }
-
-  const SmolFrontendKv = (env as unknown as Record<string, KVNamespace>)[
-    "SmolFrontendKv"
-  ];
 
   const latestVersionSource = await SmolFrontendKv.get(bundleName);
   if (latestVersionSource == null) {

@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'api/**'
+defaults:
+  run:
+    working-directory: api
 jobs:
   deploy:
     runs-on: ubuntu-latest

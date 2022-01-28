@@ -1,0 +1,33 @@
+{
+  "name": "@smol-frontend/deploy-cloudflare",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "preview": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@cazoo/eslint-plugin-eslint": "^1.0.2",
+    "@types/node": "^17.0.10",
+    "eslint": "^7.32.0",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.2"
+  },
+  "type": "module",
+  "types": "./dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/deploy-cloudflare.umd.js",
+  "module": "./dist/deploy-cloudflare.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/deploy-cloudflare.es.js",
+      "require": "./dist/deploy-cloudflare.umd.js"
+    }
+  },
+  "dependencies": {
+    "node-fetch": "^3.2.0"
+  }
+}

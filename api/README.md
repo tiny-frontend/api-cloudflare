@@ -8,5 +8,6 @@ Fork this repository.
 Run:
 
 ```bash
+cd api
 npm i
 ```

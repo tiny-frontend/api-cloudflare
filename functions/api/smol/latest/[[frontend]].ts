@@ -1,3 +1,8 @@
+interface SmolFrontendConfig {
+  umdBundle: string;
+  cssBundle?: string;
+}
+
 export const onRequest: PagesFunction = async (context) => {
   const { params, env } = context;
 
@@ -18,29 +23,23 @@ export const onRequest: PagesFunction = async (context) => {
   ];
 
   const [name, contractVersion] = params.frontend;
-  const latestVersionPointerKey = `${name}-${contractVersion}-latest`;
+  const latestConfigKey = `${name}-${contractVersion}-latest`;
 
-  const latestVersionSourceKey = await SmolFrontendKv.get(
-    latestVersionPointerKey
-  );
+  const latestConfigString = await SmolFrontendKv.get(latestConfigKey);
 
-  if (latestVersionSourceKey == null) {
+  if (latestConfigString == null) {
     return new Response(
       `${name} with contract version ${contractVersion} not found`,
       { status: 404, headers: corsHeaders }
     );
   }
 
-  return new Response(
-    JSON.stringify({
-      umdBundle: latestVersionSourceKey,
-    }),
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-cache, max-age=0",
-        ...corsHeaders,
-      },
-    }
-  );
+  const latestConfig: SmolFrontendConfig = JSON.parse(latestConfigString);
+  return new Response(JSON.stringify(latestConfig), {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-cache, max-age=0",
+      ...corsHeaders,
+    },
+  });
 };

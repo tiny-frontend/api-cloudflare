@@ -28,11 +28,19 @@ export const onRequest: PagesFunction = async (context) => {
     });
   }
 
+  const bundleNameSplit = bundleName.split(".");
+  const extension = bundleNameSplit[bundleNameSplit.length - 1];
+
   return new Response(latestVersionSource, {
     headers: {
-      "Content-Type": "application/javascript",
+      "Content-Type": contentTypeForExtension[extension],
       "Cache-Control": `public, max-age=${ONE_WEEK_IN_SECONDS}`,
       ...corsHeaders,
     },
   });
+};
+
+const contentTypeForExtension = {
+  js: "application/javascript",
+  css: "text/css",
 };

@@ -4,7 +4,8 @@
   "description": "smol frontend api deployed on Cloudflare Pages",
   "main": "index.js",
   "scripts": {
-    "dev": "wrangler dev src/index.ts"
+    "dev": "wrangler dev src/index.ts",
+    "publish": "wrangler publish src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,6 @@
     "@cazoo/eslint-plugin-eslint": "^1.0.2",
     "@cloudflare/workers-types": "^3.3.1",
     "eslint": "^7.32.0",
-    "wrangler": "^0.0.10"
+    "wrangler": "^0.0.14"
   }
 }

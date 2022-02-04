@@ -1,6 +1,6 @@
-# smol frontend api cloudflare
+# tiny frontend api cloudflare
 
-An implementation of a [`smol frontend`](https://github.com/smol-frontend) API using [Cloudflare Pages functions](https://developers.cloudflare.com/pages/platform/functions). 
+An implementation of a [`tiny frontend`](https://github.com/tiny-frontend) API using [Cloudflare Pages functions](https://developers.cloudflare.com/pages/platform/functions). 
 
 ## Start
 

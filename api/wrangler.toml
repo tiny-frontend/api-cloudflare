@@ -1,6 +1,6 @@
 compatibility_date = "2022-01-28"
-name = "smol-frontent-api-cloudlare-example"
+name = "tiny-frontent-api-cloudlare-example"
 
 kv_namespaces = [
-    { binding = "SmolFrontendKv", id = "27d5466125224a5da0bb5fb1e3d11a90", preview_id = "572318c4a2cb49a0ab1d6d39e14c82bf" }
+    { binding = "TinyFrontendKv", id = "27d5466125224a5da0bb5fb1e3d11a90", preview_id = "572318c4a2cb49a0ab1d6d39e14c82bf" }
 ]

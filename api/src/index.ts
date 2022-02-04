@@ -10,20 +10,20 @@ addEventListener("fetch", async (event) => {
       "Access-Control-Allow-Methods": "GET",
     };
 
-    if (url.pathname.startsWith("/api/smol")) {
-      const afterSmol = url.pathname.replace("/api/smol", "");
-      if (afterSmol.startsWith("/bundle")) {
+    if (url.pathname.startsWith("/api/tiny")) {
+      const afterTiny = url.pathname.replace("/api/tiny", "");
+      if (afterTiny.startsWith("/bundle")) {
         event.respondWith(
-          bundleRoute(afterSmol.replace("/bundle/", ""), corsHeaders)
+          bundleRoute(afterTiny.replace("/bundle/", ""), corsHeaders)
         );
         return;
       }
-      if (afterSmol.startsWith("/latest")) {
-        const [name, contractVersion] = afterSmol
+      if (afterTiny.startsWith("/latest")) {
+        const [name, contractVersion] = afterTiny
           .replace("/latest/", "")
           .split("/");
         event.respondWith(
-          latestRoute(name, contractVersion, corsHeaders, SmolFrontendKv)
+          latestRoute(name, contractVersion, corsHeaders, TinyFrontendKv)
         );
         return;
       }
@@ -40,5 +40,5 @@ addEventListener("fetch", async (event) => {
 });
 
 declare global {
-  const SmolFrontendKv: KVNamespace;
+  const TinyFrontendKv: KVNamespace;
 }

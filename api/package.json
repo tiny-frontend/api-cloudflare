@@ -1,7 +1,7 @@
 {
   "name": "api-cloudflare",
   "version": "0.0.1",
-  "description": "smol frontend api deployed on Cloudflare Pages",
+  "description": "tiny frontend api deployed on Cloudflare Pages",
   "main": "index.js",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smol-frontend/api-cloudflare.git"
+    "url": "git+https://github.com/tiny-frontend/api-cloudflare.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/smol-frontend/api-cloudflare/issues"
+    "url": "https://github.com/tiny-frontend/api-cloudflare/issues"
   },
-  "homepage": "https://github.com/smol-frontend/api-cloudflare#readme",
+  "homepage": "https://github.com/tiny-frontend/api-cloudflare#readme",
   "devDependencies": {
     "@cazoo/eslint-plugin-eslint": "^1.0.2",
     "@cloudflare/workers-types": "^3.3.1",

@@ -1,4 +1,4 @@
-interface SmolFrontendConfig {
+interface TinyFrontendConfig {
   umdBundle: string;
   cssBundle?: string;
 }
@@ -7,7 +7,7 @@ export const latestRoute = async (
   name: string,
   contractVersion: string,
   corsHeaders: Record<string, string>,
-  SmolFrontendKv: KVNamespace
+  TinyFrontendKv: KVNamespace
 ): Promise<Response> => {
   if (!name || !contractVersion) {
     return new Response("Invalid path parameters", {
@@ -17,7 +17,7 @@ export const latestRoute = async (
   }
   const latestConfigKey = `${name}-${contractVersion}-latest`;
 
-  const latestConfigString = await SmolFrontendKv.get(latestConfigKey);
+  const latestConfigString = await TinyFrontendKv.get(latestConfigKey);
 
   if (latestConfigString == null) {
     return new Response(
@@ -26,7 +26,7 @@ export const latestRoute = async (
     );
   }
 
-  const latestConfig: SmolFrontendConfig = JSON.parse(latestConfigString);
+  const latestConfig: TinyFrontendConfig = JSON.parse(latestConfigString);
   return new Response(JSON.stringify(latestConfig), {
     headers: {
       "Content-Type": "application/json",

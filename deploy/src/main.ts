@@ -15,7 +15,7 @@ interface DeployOptions {
   cssBundlePath?: string;
 }
 
-interface SmolFrontendConfig {
+interface TinyFrontendConfig {
   umdBundle: string;
   cssBundle?: string;
 }
@@ -54,7 +54,7 @@ export const deployBundle = async ({
   const previousLatestConfigString = await getKV(cloudflare, latestConfigKey);
 
   // Update the latest config
-  const newLatestConfig: SmolFrontendConfig = {
+  const newLatestConfig: TinyFrontendConfig = {
     umdBundle: newReleaseUmdBundleKey,
     cssBundle: newReleaseCssBundleKey,
   };
@@ -66,7 +66,7 @@ export const deployBundle = async ({
   if (previousLatestConfigString !== null) {
     const previousLatestConfig = JSON.parse(
       previousLatestConfigString
-    ) as SmolFrontendConfig;
+    ) as TinyFrontendConfig;
 
     await updateExistingKvTtl(cloudflare, previousLatestConfig.umdBundle, 3600);
     if (previousLatestConfig.cssBundle) {

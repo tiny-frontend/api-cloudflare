@@ -11,7 +11,7 @@ export const bundleRoute = async (
     });
   }
 
-  const latestVersionSource = await SmolFrontendKv.get(bundleName);
+  const latestVersionSource = await TinyFrontendKv.get(bundleName);
   if (latestVersionSource == null) {
     return new Response(`Bundle ${bundleName} not found`, {
       status: 404,

@@ -1,4 +1,4 @@
-name: Publish @smol-frontend/deploy-cloudflare npm package
+name: Publish @tiny-frontend/deploy-cloudflare npm package
 on:
   release:
     types: [created]

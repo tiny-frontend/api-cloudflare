@@ -27,6 +27,10 @@ export const deployBundle = async ({
   umdBundlePath,
   cssBundlePath,
 }: DeployOptions) => {
+  console.log(
+    `➡️ ☁️ Deploying ${name} with contract version ${contractVersion} on KV namespace ${cloudflare.kvNamespaceIdentifier}`
+  );
+
   const latestConfigKey = `${name}-${contractVersion}-latest`;
 
   const umdBundleSource = await fs.readFile(umdBundlePath);

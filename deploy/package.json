@@ -1,6 +1,6 @@
 {
   "name": "@tiny-frontend/deploy-cloudflare",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Adrien Baron <adrien@abaron.net>",
   "description": "Publish a tiny frontend to a tiny frontend API hosted on Cloudflare",
   "keywords": ["tiny","micro frontend","mfe"],

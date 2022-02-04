@@ -2,5 +2,5 @@ compatibility_date = "2022-01-28"
 name = "tiny-frontent-api-cloudlare-example"
 
 kv_namespaces = [
-    { binding = "TinyFrontendKv", id = "27d5466125224a5da0bb5fb1e3d11a90", preview_id = "572318c4a2cb49a0ab1d6d39e14c82bf" }
+    { binding = "TinyFrontendKv", id = "7113fb20c2464dcc9c521f8b0bb4d45e", preview_id = "81443b04b2c543f6bcd8305d23d3bf6c" }
 ]

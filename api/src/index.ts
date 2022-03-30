@@ -6,7 +6,9 @@ addEventListener("fetch", async (event) => {
     const url = new URL(event.request.url);
 
     const corsHeaders = {
-      "Access-Control-Allow-Origin": event.request.headers.get("Origin"),
+      "Access-Control-Allow-Origin": event.request.headers.get(
+        "Origin"
+      ) as string,
       "Access-Control-Allow-Methods": "GET",
     };
 

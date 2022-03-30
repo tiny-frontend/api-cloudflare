@@ -2,14 +2,20 @@
   "name": "api-cloudflare",
   "version": "0.0.1",
   "description": "tiny frontend api deployed on Cloudflare Pages",
-  "main": "index.js",
+  "main": "dist/worker.js",
   "scripts": {
-    "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler publish src/index.ts"
+    "build": "webpack",
+    "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
+    "lint": "eslint --max-warnings=0 ../tiny-frontent-api-cloudlare-example/src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tiny-frontend/api-cloudflare.git"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:@cazoo/eslint/node"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +27,10 @@
     "@cazoo/eslint-plugin-eslint": "^1.0.2",
     "@cloudflare/workers-types": "^3.3.1",
     "eslint": "^7.32.0",
-    "wrangler": "^0.0.14"
+    "@types/service-worker-mock": "^2.0.1",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
   }
 }

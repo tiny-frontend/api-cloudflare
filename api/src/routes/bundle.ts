@@ -24,7 +24,7 @@ export const bundleRoute = async (
 
   return new Response(latestVersionSource, {
     headers: {
-      "Content-Type": contentTypeForExtension[extension],
+      "Content-Type": contentTypeForExtension[extension as "css" | "js"],
       "Cache-Control": `public, max-age=${ONE_WEEK_IN_SECONDS}`,
       ...corsHeaders,
     },

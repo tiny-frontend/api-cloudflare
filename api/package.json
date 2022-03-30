@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
-    "lint": "eslint --max-warnings=0 ../tiny-frontent-api-cloudlare-example/src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'"
+    "lint": "eslint --max-warnings=0 ../tiny-frontent-api-cloudlare-example/src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
+    "deploy": "wrangler publish"
   },
   "repository": {
     "type": "git",

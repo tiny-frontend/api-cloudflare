@@ -13,6 +13,7 @@ interface DeployOptions {
   contractVersion: string;
   umdBundlePath: string;
   cssBundlePath?: string;
+  previousBundleTtlInSeconds?: number;
 }
 
 interface TinyFrontendConfig {
@@ -20,12 +21,15 @@ interface TinyFrontendConfig {
   cssBundle?: string;
 }
 
+const ONE_MONTH_IN_SECONDS = 31 * 24 * 60 * 60;
+
 export const deployBundle = async ({
   cloudflare,
   name,
   contractVersion,
   umdBundlePath,
   cssBundlePath,
+  previousBundleTtlInSeconds = ONE_MONTH_IN_SECONDS,
 }: DeployOptions) => {
   console.log(
     `➡️ ☁️ Deploying ${name} with contract version ${contractVersion} on KV namespace ${cloudflare.kvNamespaceIdentifier}`
@@ -72,12 +76,16 @@ export const deployBundle = async ({
       previousLatestConfigString
     ) as TinyFrontendConfig;
 
-    await updateExistingKvTtl(cloudflare, previousLatestConfig.umdBundle, 3600);
+    await updateExistingKvTtl(
+      cloudflare,
+      previousLatestConfig.umdBundle,
+      previousBundleTtlInSeconds
+    );
     if (previousLatestConfig.cssBundle) {
       await updateExistingKvTtl(
         cloudflare,
         previousLatestConfig.cssBundle,
-        3600
+        previousBundleTtlInSeconds
       );
     }
 
